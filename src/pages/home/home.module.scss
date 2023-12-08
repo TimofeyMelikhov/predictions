@@ -1,51 +1,58 @@
 @import '../../assets/style/variables';
 
 .main {
-	position: relative;
 	display: flex;
-	align-items: center;
+	flex-direction: column;
 	justify-content: center;
+	align-items: center;
 	height: 100vh;
-	margin: 0;
+	background: url('../../assets/img/Frame\ 17.svg');
 	.smalCat {
-		position: absolute;
-		right: 0px;
-		top: 20px;
+		max-width: 213px;
+		min-height: 213px;
+		margin-left: auto;
+		padding-top: 30px;
 		& img {
 			width: 213px;
 			height: 213px;
 		}
 	}
-	.cat {
+
+	.content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		&__header {
+			text-align: center;
+			font-size: 66.67px;
+			& span {
+				color: #f40e91;
+			}
+		}
+	}
+
+	.catAndCopy {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-end;
+	}
+
+	.copyrigth {
 		position: absolute;
 		bottom: 0;
-		& img {
-			width: 862px;
-		}
-	}
-}
-
-.content {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	margin-top: -160px;
-	&__header {
-		text-align: center;
-		font-size: 66.67px;
-		& span {
+		right: 0;
+		text-align: right;
+		flex-shrink: 1;
+		padding: 0px 30px 30px 0px;
+		font-family: Inter;
+		font-size: 21px;
+		font-weight: 300;
+		color: #fff;
+		opacity: 0.6;
+		& div {
+			text-align-last: left;
 			color: #f40e91;
 		}
-	}
-}
-
-.copyrigth {
-	font-family: Inter;
-	font-size: 21px;
-	font-weight: 300;
-	color: #fff;
-	opacity: 0.6;
-	& span {
-		color: #f40e91;
 	}
 }

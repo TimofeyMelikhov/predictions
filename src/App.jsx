@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import { NotFound } from './pages/NotFound'
-import { Prediction } from './pages/Prediction'
 import { Home } from './pages/home/Home'
+import { NotFound } from './pages/notFound/NotFound'
+import { Prediction } from './pages/prediction/Prediction'
 
 function App() {
 	return (
