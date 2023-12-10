@@ -1,49 +1,85 @@
+import VolumeDownOutlinedIcon from '@mui/icons-material/VolumeDownOutlined'
+import VolumeUpOutlinedIcon from '@mui/icons-material/VolumeUpOutlined'
+import { Slider } from '@mui/material'
 import { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { secondsConverter } from 'src/utils/secondsConverter'
 
-import {
-	setCurrentTrack,
-	updateDuration,
-	updateTime
-} from '../../store/predictionSlice'
+import { updateTime, updateVolume } from '../../store/predictionSlice'
+
+import classes from './palybar.module.scss'
 
 export const Playbar = () => {
 	const dispatch = useDispatch()
-	const { currentTrack, isPlaying, currentTime, duration } = useSelector(
-		state => state.predictionSlice
-	)
 	const audioRef = useRef(null)
+	const { currentTrack, isPlaying, duration, currentTime, currentVolume } =
+		useSelector(state => state.predictionSlice)
+
+	const formattedCurrentDuration = secondsConverter(currentTime)
+	const formattedDuration = secondsConverter(duration)
+	const sliderCurrentTime = Math.round((currentTime / duration) * 100)
 
 	useEffect(() => {
 		if (audioRef.current) {
-			// Управление воспроизведением, обновлением времени и длительности
-			if (isPlaying) {
+			audioRef.current.volume = currentVolume
+			if (!isPlaying) {
 				audioRef.current.play()
 			} else {
 				audioRef.current.pause()
 			}
 		}
-	}, [isPlaying])
+	}, [currentTrack, currentVolume, dispatch, isPlaying])
 
 	const handleTimeUpdate = () => {
 		dispatch(updateTime(audioRef.current.currentTime))
 	}
-
-	const handleDurationChange = () => {
-		dispatch(updateDuration(audioRef.current.duration))
+	const handleChangeCurrentTime = (_, value) => {
+		const time = Math.round((value / 100) * duration)
+		dispatch(updateTime(time))
+		audioRef.current.currentTime = time
+	}
+	const handleVolumeChange = (_, value) => {
+		let volume = (audioRef.current.volume = value)
+		dispatch(updateVolume(volume))
+		audioRef.current.volume = currentVolume
 	}
 
 	return (
-		<div>
-			<div>
-				{currentTime} — {duration}
+		<div className={classes.main}>
+			<div className={classes.slider}>
+				<Slider
+					step={1}
+					min={0}
+					max={100}
+					value={sliderCurrentTime}
+					onChange={handleChangeCurrentTime}
+					sx={{
+						color: '#fff'
+					}}
+				/>
 			</div>
-
+			<div className={classes.time}>
+				<div>{formattedCurrentDuration}</div>
+				<div>{formattedDuration}</div>
+			</div>
+			<div className={classes.volume}>
+				<VolumeDownOutlinedIcon />
+				<Slider
+					step={0.01}
+					min={0}
+					max={1}
+					value={currentVolume}
+					onChange={handleVolumeChange}
+					sx={{
+						color: '#fff'
+					}}
+				/>
+				<VolumeUpOutlinedIcon />
+			</div>
 			<audio
 				ref={audioRef}
-				src={currentTrack}
+				src={currentTrack?.trackLink}
 				onTimeUpdate={handleTimeUpdate}
-				onDurationChange={handleDurationChange}
 			/>
 		</div>
 	)

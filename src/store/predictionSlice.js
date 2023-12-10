@@ -9,7 +9,8 @@ const predictionSlice = createSlice({
 		currentTrack: null,
 		isPlaying: false,
 		currentTime: 0,
-		duration: 0
+		duration: 0,
+		currentVolume: 0.5
 	},
 	reducers: {
 		setCurrentTrack: (state, action) => {
@@ -20,10 +21,21 @@ const predictionSlice = createSlice({
 		},
 		updateDuration: (state, action) => {
 			state.duration = action.payload
+		},
+		setPlaying: (state, action) => {
+			state.isPlaying = action.payload
+		},
+		updateVolume: (state, action) => {
+			state.currentVolume = action.payload
 		}
 	}
 })
 
-export const { setCurrentTrack, updateTime, updateDuration } =
-	predictionSlice.actions
+export const {
+	setCurrentTrack,
+	updateTime,
+	updateDuration,
+	setPlaying,
+	updateVolume
+} = predictionSlice.actions
 export default predictionSlice.reducer

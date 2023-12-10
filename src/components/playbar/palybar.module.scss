@@ -1,0 +1,20 @@
+.slider {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	flex-basis: 600px;
+	margin-left: auto;
+	margin-top: 40px;
+}
+.volume {
+	display: flex;
+	align-items: center;
+	width: 150px;
+	margin-top: 10px;
+}
+.time {
+	display: flex;
+	justify-content: space-between;
+	font-weight: 300;
+	font-size: 16px;
+}

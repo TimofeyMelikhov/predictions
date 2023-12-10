@@ -1,9 +1,11 @@
+import garden from 'src/assets/img/garden.jpg'
 import prediction_cat from 'src/assets/img/prediction_cat.png'
+import river from 'src/assets/img/river.jpg'
 
 export const predictions = [
 	{
 		id: 1,
-		img: prediction_cat,
+		img: river,
 		descr: 'Какое то предсказание',
 		trackLink:
 			'https://kurs.espbmrc.ru/courses/prediction/kizaru-money-long-mp3.mp3',
@@ -13,7 +15,7 @@ export const predictions = [
 	},
 	{
 		id: 2,
-		img: prediction_cat,
+		img: river,
 		descr: 'Какое то предсказание 2',
 		trackLink:
 			'https://kurs.espbmrc.ru/courses/prediction/kizaru-dezhavyu-mp3.mp3',
@@ -23,7 +25,7 @@ export const predictions = [
 	},
 	{
 		id: 3,
-		img: prediction_cat,
+		img: garden,
 		descr: 'Какое то предсказание 3',
 		trackLink:
 			'https://kurs.espbmrc.ru/courses/prediction/instasamka-za-dengi-da-mp3.mp3',
