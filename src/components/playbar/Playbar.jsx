@@ -28,11 +28,14 @@ export const Playbar = () => {
 				audioRef.current.pause()
 			}
 		}
+		const timeInterval = setInterval(() => {
+			dispatch(updateTime(audioRef.current.currentTime))
+		}, 1000)
+		return () => {
+			clearInterval(timeInterval)
+		}
 	}, [currentTrack, currentVolume, dispatch, isPlaying])
 
-	const handleTimeUpdate = () => {
-		dispatch(updateTime(audioRef.current.currentTime))
-	}
 	const handleChangeCurrentTime = (_, value) => {
 		const time = Math.round((value / 100) * duration)
 		dispatch(updateTime(time))
@@ -76,11 +79,7 @@ export const Playbar = () => {
 				/>
 				<VolumeUpOutlinedIcon />
 			</div>
-			<audio
-				ref={audioRef}
-				src={currentTrack?.trackLink}
-				onTimeUpdate={handleTimeUpdate}
-			/>
+			<audio ref={audioRef} src={currentTrack?.trackLink} />
 		</div>
 	)
 }

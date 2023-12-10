@@ -68,8 +68,6 @@ export const Prediction = () => {
 		// Дополнительные стили по вашему выбору
 	}
 
-	console.log(imageColors)
-
 	return (
 		<div className={classes.main} style={gradientStyle}>
 			{/* <Link to='/'>Назад</Link> */}
