@@ -6,6 +6,11 @@
 	min-height: 100vh;
 	background: linear-gradient(249.93deg, #f3ddb8 1.33%, #ee9573 102.97%);
 
+	&__player {
+		position: relative;
+		// filter: blur(4px);
+	}
+
 	.predictionCard {
 		width: 400px;
 		height: 400px;
@@ -27,5 +32,13 @@
 		&__trackName {
 			font-weight: 700;
 		}
+	}
+	.reset__btn {
+		position: absolute;
+		cursor: pointer;
+		width: 152px;
+		height: 152px;
+		background: url('../../assets/img/resetBtn.png');
+		z-index: 999;
 	}
 }

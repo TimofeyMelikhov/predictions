@@ -6,6 +6,7 @@ import { secondsConverter } from 'src/utils/secondsConverter'
 
 import {
 	setPlaying,
+	setTrackEnded,
 	updateTime,
 	updateVolume
 } from '../../store/predictionSlice'
@@ -31,6 +32,12 @@ export const Playbar = () => {
 			}
 		}
 	}, [currentTrack, currentVolume, dispatch, isPlaying])
+
+	useEffect(() => {
+		audioRef.current.addEventListener('ended', () => {
+			dispatch(setTrackEnded(true))
+		})
+	}, [])
 
 	const handleChangeCurrentTime = (_, value) => {
 		const time = Math.round((value / 100) * duration)
@@ -98,33 +105,38 @@ export const Playbar = () => {
 							/>
 						)}
 					</IconButton>
-					<div
-						className={classes.volume}
-						onMouseEnter={() => setVolumeSliderVisible(true)}
-						onMouseLeave={() => setVolumeSliderVisible(false)}
-					>
+					{currentVolume === 0 ? (
+						<div
+							className={classes.volume_mute}
+							onMouseEnter={() => setVolumeSliderVisible(true)}
+						></div>
+					) : (
+						<div
+							className={classes.volume}
+							onMouseEnter={() => setVolumeSliderVisible(true)}
+						></div>
+					)}
+
+					{isVolumeSliderVisible && (
 						<div
 							className={classes.volume_bar}
-							onMouseEnter={() => setVolumeSliderVisible(true)}
 							onMouseLeave={() => setVolumeSliderVisible(false)}
 						>
-							{isVolumeSliderVisible && (
-								<Slider
-									step={0.01}
-									min={0}
-									max={1}
-									value={currentVolume}
-									onChange={handleVolumeChange}
-									sx={{
-										color: '#fff',
-										'.css-eg0mwd-MuiSlider-thumb:hover': {
-											boxShadow: 'none'
-										}
-									}}
-								/>
-							)}
+							<Slider
+								step={0.01}
+								min={0}
+								max={1}
+								value={currentVolume}
+								onChange={handleVolumeChange}
+								sx={{
+									color: '#fff',
+									'.css-eg0mwd-MuiSlider-thumb:hover': {
+										boxShadow: 'none'
+									}
+								}}
+							/>
 						</div>
-					</div>
+					)}
 					<div>{formattedCurrentDuration}</div>
 				</div>
 				<div>{formattedDuration}</div>

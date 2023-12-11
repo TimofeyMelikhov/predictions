@@ -6,7 +6,7 @@ import { Prediction } from './pages/prediction/Prediction'
 
 function App() {
 	return (
-		<BrowserRouter>
+		<BrowserRouter basename={import.meta.env.BASE_URL}>
 			<Routes>
 				<Route path='/' element={<Home />} />
 				<Route path='/prediction/:id' element={<Prediction />} />

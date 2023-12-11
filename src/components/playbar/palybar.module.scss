@@ -7,7 +7,6 @@
 	margin-top: 40px;
 }
 .volume {
-	position: relative;
 	display: flex;
 	align-items: center;
 	width: 24px;
@@ -16,11 +15,18 @@
 	background: url('../../assets/img/med-volume.png');
 	cursor: pointer;
 
+	&_mute {
+		width: 24px;
+		height: 24px;
+		margin-right: 15px;
+		background: url('../../assets/img/mute-volume.png');
+	}
+
 	&_bar {
-		position: absolute;
+		display: flex;
+		align-items: center;
 		width: 100px;
-		top: 25px;
-		left: -32px;
+		margin-right: 10px;
 	}
 }
 .time {
