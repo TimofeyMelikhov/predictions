@@ -7,14 +7,31 @@
 	margin-top: 40px;
 }
 .volume {
+	position: relative;
 	display: flex;
 	align-items: center;
-	width: 150px;
-	margin-top: 10px;
+	width: 24px;
+	height: 24px;
+	margin-right: 8px;
+	background: url('../../assets/img/med-volume.png');
+	cursor: pointer;
+
+	&_bar {
+		position: absolute;
+		width: 100px;
+		top: 25px;
+		left: -32px;
+	}
 }
 .time {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	font-weight: 300;
 	font-size: 16px;
+	&_icon {
+		display: flex;
+		align-items: center;
+		margin-left: -15px;
+	}
 }

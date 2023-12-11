@@ -1,11 +1,14 @@
-import VolumeDownOutlinedIcon from '@mui/icons-material/VolumeDownOutlined'
-import VolumeUpOutlinedIcon from '@mui/icons-material/VolumeUpOutlined'
-import { Slider } from '@mui/material'
-import { useEffect, useRef } from 'react'
+import { Pause, PlayArrow } from '@mui/icons-material'
+import { IconButton, Slider } from '@mui/material'
+import { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { secondsConverter } from 'src/utils/secondsConverter'
 
-import { updateTime, updateVolume } from '../../store/predictionSlice'
+import {
+	setPlaying,
+	updateTime,
+	updateVolume
+} from '../../store/predictionSlice'
 
 import classes from './palybar.module.scss'
 
@@ -14,6 +17,7 @@ export const Playbar = () => {
 	const audioRef = useRef(null)
 	const { currentTrack, isPlaying, duration, currentTime, currentVolume } =
 		useSelector(state => state.predictionSlice)
+	const [isVolumeSliderVisible, setVolumeSliderVisible] = useState(false)
 
 	const formattedCurrentDuration = secondsConverter(currentTime)
 	const formattedDuration = secondsConverter(duration)
@@ -22,17 +26,9 @@ export const Playbar = () => {
 	useEffect(() => {
 		if (audioRef.current) {
 			audioRef.current.volume = currentVolume
-			if (!isPlaying) {
+			if (isPlaying) {
 				audioRef.current.play()
-			} else {
-				audioRef.current.pause()
 			}
-		}
-		const timeInterval = setInterval(() => {
-			dispatch(updateTime(audioRef.current.currentTime))
-		}, 1000)
-		return () => {
-			clearInterval(timeInterval)
 		}
 	}, [currentTrack, currentVolume, dispatch, isPlaying])
 
@@ -47,6 +43,20 @@ export const Playbar = () => {
 		audioRef.current.volume = currentVolume
 	}
 
+	const timeUpdate = () => {
+		dispatch(updateTime(audioRef.current.currentTime))
+	}
+
+	const handleToggleAudio = () => {
+		if (isPlaying) {
+			dispatch(setPlaying(false))
+			audioRef.current.pause()
+		} else {
+			dispatch(setPlaying(true))
+			audioRef.current.play()
+		}
+	}
+
 	return (
 		<div className={classes.main}>
 			<div className={classes.slider}>
@@ -57,29 +67,74 @@ export const Playbar = () => {
 					value={sliderCurrentTime}
 					onChange={handleChangeCurrentTime}
 					sx={{
-						color: '#fff'
+						color: '#fff',
+						'.css-eg0mwd-MuiSlider-thumb:hover': {
+							boxShadow: 'none'
+						}
 					}}
 				/>
 			</div>
 			<div className={classes.time}>
-				<div>{formattedCurrentDuration}</div>
+				<div className={classes.time_icon}>
+					<IconButton
+						onClick={handleToggleAudio}
+						sx={{
+							'.css-1dttucw-MuiButtonBase-root-MuiIconButton-root:hover': {
+								backgroundColor: 'transparent'
+							}
+						}}
+					>
+						{isPlaying ? (
+							<Pause
+								sx={{
+									color: '#fff'
+								}}
+							/>
+						) : (
+							<PlayArrow
+								sx={{
+									color: '#fff'
+								}}
+							/>
+						)}
+					</IconButton>
+					<div
+						className={classes.volume}
+						onMouseEnter={() => setVolumeSliderVisible(true)}
+						onMouseLeave={() => setVolumeSliderVisible(false)}
+					>
+						<div
+							className={classes.volume_bar}
+							onMouseEnter={() => setVolumeSliderVisible(true)}
+							onMouseLeave={() => setVolumeSliderVisible(false)}
+						>
+							{isVolumeSliderVisible && (
+								<Slider
+									step={0.01}
+									min={0}
+									max={1}
+									value={currentVolume}
+									onChange={handleVolumeChange}
+									sx={{
+										color: '#fff',
+										'.css-eg0mwd-MuiSlider-thumb:hover': {
+											boxShadow: 'none'
+										}
+									}}
+								/>
+							)}
+						</div>
+					</div>
+					<div>{formattedCurrentDuration}</div>
+				</div>
 				<div>{formattedDuration}</div>
 			</div>
-			<div className={classes.volume}>
-				<VolumeDownOutlinedIcon />
-				<Slider
-					step={0.01}
-					min={0}
-					max={1}
-					value={currentVolume}
-					onChange={handleVolumeChange}
-					sx={{
-						color: '#fff'
-					}}
-				/>
-				<VolumeUpOutlinedIcon />
-			</div>
-			<audio ref={audioRef} src={currentTrack?.trackLink} />
+
+			<audio
+				ref={audioRef}
+				src={currentTrack?.trackLink}
+				onTimeUpdate={timeUpdate}
+			/>
 		</div>
 	)
 }

@@ -7,7 +7,7 @@ const predictionSlice = createSlice({
 	initialState: {
 		predictions,
 		currentTrack: null,
-		isPlaying: false,
+		isPlaying: true,
 		currentTime: 0,
 		duration: 0,
 		currentVolume: 0.5

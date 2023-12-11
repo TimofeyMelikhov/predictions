@@ -70,7 +70,7 @@ export const Prediction = () => {
 
 	return (
 		<div className={classes.main} style={gradientStyle}>
-			{/* <Link to='/'>Назад</Link> */}
+			<Link to='/'>Назад</Link>
 
 			<div className={classes.main__player}>
 				<div className={classes.predictionCard}>
