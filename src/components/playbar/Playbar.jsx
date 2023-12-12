@@ -105,38 +105,35 @@ export const Playbar = () => {
 							/>
 						)}
 					</IconButton>
-					{currentVolume === 0 ? (
-						<div
-							className={classes.volume_mute}
-							onMouseEnter={() => setVolumeSliderVisible(true)}
-						></div>
-					) : (
-						<div
-							className={classes.volume}
-							onMouseEnter={() => setVolumeSliderVisible(true)}
-						></div>
-					)}
+					<div
+						className={classes.volumeContainer}
+						onMouseEnter={() => setVolumeSliderVisible(true)}
+						onMouseLeave={() => setVolumeSliderVisible(false)}
+					>
+						{currentVolume === 0 ? (
+							<div className={classes.volume_mute}></div>
+						) : (
+							<div className={classes.volume}></div>
+						)}
 
-					{isVolumeSliderVisible && (
-						<div
-							className={classes.volume_bar}
-							onMouseLeave={() => setVolumeSliderVisible(false)}
-						>
-							<Slider
-								step={0.01}
-								min={0}
-								max={1}
-								value={currentVolume}
-								onChange={handleVolumeChange}
-								sx={{
-									color: '#fff',
-									'.css-eg0mwd-MuiSlider-thumb:hover': {
-										boxShadow: 'none'
-									}
-								}}
-							/>
-						</div>
-					)}
+						{isVolumeSliderVisible && (
+							<div className={classes.volume_bar}>
+								<Slider
+									step={0.01}
+									min={0}
+									max={1}
+									value={currentVolume}
+									onChange={handleVolumeChange}
+									sx={{
+										color: '#fff',
+										'.css-eg0mwd-MuiSlider-thumb:hover': {
+											boxShadow: 'none'
+										}
+									}}
+								/>
+							</div>
+						)}
+					</div>
 					<div>{formattedCurrentDuration}</div>
 				</div>
 				<div>{formattedDuration}</div>

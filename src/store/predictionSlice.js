@@ -10,7 +10,7 @@ const predictionSlice = createSlice({
 		isPlaying: true,
 		currentTime: 0,
 		duration: 0,
-		currentVolume: 0.1,
+		currentVolume: 0.5,
 		trackEnded: false
 	},
 	reducers: {
