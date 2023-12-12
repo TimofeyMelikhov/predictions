@@ -33,12 +33,22 @@
 			font-weight: 700;
 		}
 	}
-	.reset__btn {
+	.reset {
 		position: absolute;
-		cursor: pointer;
-		width: 152px;
-		height: 152px;
-		background: url('../../assets/img/resetBtn.png');
-		z-index: 999;
+		width: 545px;
+		height: 413px;
+		left: 0;
+		bottom: 0;
+		background: url('../../assets/img/cat.svg');
+		&__btn {
+			position: absolute;
+			right: 15px;
+			top: 50%;
+			cursor: pointer;
+			width: 103px;
+			height: 103px;
+			background: url('../../assets/img/resetBtn.png');
+			z-index: 999;
+		}
 	}
 }

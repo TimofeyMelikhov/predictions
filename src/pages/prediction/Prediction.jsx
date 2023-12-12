@@ -20,7 +20,7 @@ export const Prediction = () => {
 	const prediction = useSelector(state => state.predictionSlice.predictions)
 	const { trackEnded } = useSelector(state => state.predictionSlice)
 	const [imageColors, setImageColors] = useState([])
-	const [overlayStyles, setOverlayStyles] = useState({ filter: 'blur(0px)' })
+	const [showBlock, setShowBlock] = useState(false)
 
 	const currentPrediction = prediction.find(
 		prediction => prediction.id === parseInt(id, 10)
@@ -70,12 +70,6 @@ export const Prediction = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [currentPrediction, dispatch])
 
-	useEffect(() => {
-		if (trackEnded) {
-			setOverlayStyles({ filter: 'blur(4px)' })
-		}
-	}, [trackEnded])
-
 	const gradientStyle = {
 		background: `linear-gradient(249.93deg, ${imageColors.join(', ')})`
 	}
@@ -83,19 +77,31 @@ export const Prediction = () => {
 	const resetApp = () => {
 		navigate(`/prediction/${randomId}`)
 		dispatch(setTrackEnded(false))
-		setOverlayStyles({ filter: 'blur(0px)' })
+		setShowBlock(false)
 	}
 
-	console.log(trackEnded)
+	useEffect(() => {
+		const timerId = setInterval(() => {
+			setShowBlock(true)
+		}, 31000)
+
+		return () => {
+			clearInterval(timerId)
+		}
+	}, [showBlock])
 
 	return (
 		<div className={classes.main} style={gradientStyle}>
 			{/* <Link to='/'>Назад</Link> */}
-			{trackEnded && (
-				<div className={classes.reset__btn} onClick={resetApp}></div>
+
+			{showBlock && (
+				<div className={classes.reset}>
+					<div className={classes.reset__cat}></div>
+					<div className={classes.reset__btn} onClick={resetApp}></div>
+				</div>
 			)}
 
-			<div className={classes.main__player} style={overlayStyles}>
+			<div className={classes.main__player}>
 				<div className={classes.predictionCard}>
 					<img src={currentPrediction.img} alt='image current prediction' />
 					<div> {prediction.descr} </div>
