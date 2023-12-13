@@ -36,6 +36,14 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: flex-end;
+
+		@media (max-width: 1366px) {
+			align-items: center;
+		}
+
+		& img {
+			width: 53%;
+		}
 	}
 
 	.copyrigth {

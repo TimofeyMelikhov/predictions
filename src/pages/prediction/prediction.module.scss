@@ -16,6 +16,11 @@
 		border-radius: 40px;
 		box-shadow: 0px 15px 40px -1px #5555550d;
 
+		@media (max-width: 1366px) {
+			width: 300px;
+			height: 300px;
+		}
+
 		& img {
 			border-radius: 40px;
 			width: 100%;
@@ -31,6 +36,11 @@
 		margin-top: 73px;
 		text-align: center;
 		font-size: 22px;
+
+		@media (max-width: 1366px) {
+			margin-top: 33px;
+		}
+
 		&__artist {
 			font-weight: 300;
 		}
@@ -48,6 +58,11 @@
 		background: url('../../assets/img/cat.svg');
 		opacity: 0;
 		animation: toShow 3s ease-in-out normal forwards;
+
+		@media (max-width: 1366px) {
+			width: 520px;
+		}
+
 		&__btn {
 			position: absolute;
 			right: 15px;

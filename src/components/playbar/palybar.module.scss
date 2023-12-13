@@ -5,6 +5,10 @@
 	flex-basis: 600px;
 	margin-left: auto;
 	margin-top: 40px;
+
+	@media (max-width: 1366px) {
+		margin-top: 20px;
+	}
 }
 
 .volumeContainer {
