@@ -35,7 +35,7 @@ export const Prediction = () => {
 			canvas.width = image.width
 			canvas.height = image.height
 
-			const ctx = canvas.getContext('2d')
+			const ctx = canvas.getContext('2d', { willReadFrequently: true })
 			ctx.drawImage(image, 0, 0, image.width, image.height)
 
 			// Получение цветов изображения из трех разных точек
@@ -63,10 +63,10 @@ export const Prediction = () => {
 	}
 
 	useEffect(() => {
+		loadImageColors()
 		dispatch(setCurrentTrack(currentPrediction))
 		dispatch(updateDuration(currentPrediction.duration))
-		loadImageColors()
-	}, [currentPrediction, dispatch, loadImageColors])
+	}, [currentPrediction, dispatch])
 
 	const gradientStyle = {
 		background: `linear-gradient(249.93deg, ${imageColors.join(', ')})`

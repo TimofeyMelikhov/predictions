@@ -20,8 +20,6 @@ export const ProgressBar = () => {
 		'Таролог готовит расклад на год грядущий, потерпите'
 	]
 
-	console.log(progressPhrases.length)
-
 	useEffect(() => {
 		const interval = setInterval(() => {
 			if (progress < 100) {
@@ -31,7 +29,7 @@ export const ProgressBar = () => {
 				setTimeout(() => {
 					dispatch(setProgress(0))
 					navigate(`/prediction/${randomId}`)
-				}, 0)
+				}, 100)
 			}
 		}, 100)
 
