@@ -40,6 +40,8 @@
 		left: 0;
 		bottom: 0;
 		background: url('../../assets/img/cat.svg');
+		opacity: 0;
+		animation: toShow 3s ease-in-out normal forwards;
 		&__btn {
 			position: absolute;
 			right: 15px;
@@ -50,5 +52,13 @@
 			background: url('../../assets/img/resetBtn.png');
 			z-index: 999;
 		}
+	}
+}
+@keyframes toShow {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
 	}
 }

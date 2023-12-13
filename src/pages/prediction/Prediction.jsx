@@ -18,20 +18,19 @@ export const Prediction = () => {
 	const { id } = useParams()
 	const dispatch = useDispatch()
 	const prediction = useSelector(state => state.predictionSlice.predictions)
-	const { trackEnded } = useSelector(state => state.predictionSlice)
 	const [imageColors, setImageColors] = useState([])
 	const [showBlock, setShowBlock] = useState(false)
 
 	const currentPrediction = prediction.find(
 		prediction => prediction.id === parseInt(id, 10)
 	)
-	const randomId = Math.floor(Math.random() * prediction.length) + 1
 
-	const loadImageColors = () => {
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	function loadImageColors() {
 		const image = new Image()
 		image.src = currentPrediction.img
 
-		image.onload = () => {
+		image.onload = async () => {
 			const canvas = document.createElement('canvas')
 			canvas.width = image.width
 			canvas.height = image.height
@@ -67,15 +66,14 @@ export const Prediction = () => {
 		dispatch(setCurrentTrack(currentPrediction))
 		dispatch(updateDuration(currentPrediction.duration))
 		loadImageColors()
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [currentPrediction, dispatch])
+	}, [currentPrediction, dispatch, loadImageColors])
 
 	const gradientStyle = {
 		background: `linear-gradient(249.93deg, ${imageColors.join(', ')})`
 	}
 
 	const resetApp = () => {
-		navigate(`/prediction/${randomId}`)
+		navigate('/loading')
 		dispatch(setTrackEnded(false))
 		setShowBlock(false)
 	}
@@ -83,7 +81,7 @@ export const Prediction = () => {
 	useEffect(() => {
 		const timerId = setInterval(() => {
 			setShowBlock(true)
-		}, 31000)
+		}, 21000)
 
 		return () => {
 			clearInterval(timerId)
@@ -92,8 +90,6 @@ export const Prediction = () => {
 
 	return (
 		<div className={classes.main} style={gradientStyle}>
-			{/* <Link to='/'>Назад</Link> */}
-
 			{showBlock && (
 				<div className={classes.reset}>
 					<div className={classes.reset__cat}></div>

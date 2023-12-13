@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux'
 import cat from 'src/assets/img/cat.png'
 import smalCat from 'src/assets/img/smal_cat.png'
 
@@ -7,10 +6,6 @@ import { MainButton } from 'src/components/ui/mainButton/MainButton'
 import classes from './home.module.scss'
 
 export const Home = () => {
-	const prediction = useSelector(state => state.predictionSlice.predictions)
-
-	const randomId = Math.floor(Math.random() * prediction.length) + 1
-
 	return (
 		<div className={classes.main}>
 			<div className={classes.smalCat}>
@@ -22,7 +17,7 @@ export const Home = () => {
 					Раздаем <span>песни-предсказания</span> <br /> на новый
 					<span> 2024</span>
 				</h1>
-				<MainButton id={randomId} />
+				<MainButton />
 			</div>
 
 			<div className={classes.catAndCopy}>

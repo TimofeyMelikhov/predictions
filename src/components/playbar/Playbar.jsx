@@ -37,7 +37,7 @@ export const Playbar = () => {
 		audioRef.current.addEventListener('ended', () => {
 			dispatch(setTrackEnded(true))
 		})
-	}, [])
+	}, [dispatch])
 
 	const handleChangeCurrentTime = (_, value) => {
 		const time = Math.round((value / 100) * duration)

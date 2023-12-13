@@ -1,0 +1,26 @@
+/* Добавьте стили в ваш файл CSS */
+.progressContainer {
+	width: 30%;
+	margin-top: 10px;
+	background: #ccc;
+	height: 13px;
+	border-radius: 10px;
+	position: relative;
+	overflow: hidden;
+	transition: height 0.5s ease-in-out; /* Добавим анимацию высоты для плавного изменения размера контейнера */
+}
+
+.progressBar {
+	height: 100%;
+	background: #fff;
+	border-radius: 10px;
+	position: absolute;
+	text-align: center;
+	line-height: 20px;
+	transition: width 0.5s ease-in-out; /* Анимация ширины для плавного изменения прогресса */
+}
+
+/* Добавим класс transition для запуска анимации */
+.transition {
+	height: 0;
+}

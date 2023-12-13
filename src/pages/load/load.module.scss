@@ -1,0 +1,14 @@
+.load {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background: url('../../assets/img/load_BG.svg');
+
+	&__cat {
+		width: 255px;
+		height: 272px;
+		background: url(../../assets/img/Cat_2.svg);
+	}
+}

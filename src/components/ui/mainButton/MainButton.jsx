@@ -2,11 +2,11 @@ import { useNavigate } from 'react-router-dom'
 
 import classes from './mainButton.module.scss'
 
-export const MainButton = ({ id }) => {
+export const MainButton = () => {
 	const navigate = useNavigate()
 
 	const clickHandler = () => {
-		navigate(`/prediction/${id}`)
+		navigate('/loading')
 	}
 
 	return (
