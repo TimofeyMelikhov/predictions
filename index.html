@@ -1,31 +1,33 @@
 <!doctype html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3csvg%20width='36'%20height='36'%20viewBox='0%200%2036%2036'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M24.9625%204.55402C24.8188%204.02048%2024.0619%204.02048%2023.9182%204.55402C23.6051%205.71709%2022.6965%206.6256%2021.5335%206.93875C20.9999%207.08241%2020.9999%207.83939%2021.5335%207.98304C22.6965%208.2962%2023.6051%209.20471%2023.9182%2010.3678C24.0619%2010.9013%2024.8188%2010.9013%2024.9625%2010.3678C25.2757%209.20471%2026.1842%208.2962%2027.3472%207.98304C27.8808%207.83939%2027.8808%207.08241%2027.3472%206.93876C26.1842%206.6256%2025.2757%205.71709%2024.9625%204.55402ZM11.8798%206.94055C12.2872%205.00743%2015.0469%205.00743%2015.4543%206.94055L15.7042%208.12603C16.5014%2011.9083%2019.2746%2014.9678%2022.9606%2016.1315C25.0997%2016.8068%2025.0997%2019.8339%2022.9606%2020.5092C19.2746%2021.6729%2016.5014%2024.7323%2015.7042%2028.5147L15.4543%2029.7001C15.0469%2031.6333%2012.2872%2031.6333%2011.8798%2029.7001L11.6299%2028.5147C10.8327%2024.7323%208.05953%2021.6729%204.37345%2020.5092C2.23438%2019.8339%202.23438%2016.8068%204.37345%2016.1315C8.05953%2014.9678%2010.8327%2011.9083%2011.6299%208.12603L11.8798%206.94055ZM27.8646%2018.0924C28.0598%2016.8273%2029.8823%2016.8273%2030.0775%2018.0924C30.3289%2019.7212%2031.4545%2021.0803%2033.008%2021.6306L33.4557%2021.7892C34.6265%2022.204%2034.6265%2023.8597%2033.4557%2024.2744L33.008%2024.4331C31.4545%2024.9834%2030.3289%2026.3425%2030.0775%2027.9712C29.8823%2029.2363%2028.0598%2029.2363%2027.8646%2027.9712C27.6133%2026.3425%2026.4876%2024.9834%2024.9342%2024.4331L24.4864%2024.2744C23.3157%2023.8597%2023.3157%2022.204%2024.4864%2021.7892L24.9342%2021.6306C26.4876%2021.0803%2027.6133%2019.7212%2027.8646%2018.0924Z'%20fill='url(%23paint0_linear_179_35)'/%3e%3cdefs%3e%3clinearGradient%20id='paint0_linear_179_35'%20x1='-7.54749'%20y1='47.0141'%20x2='115.965'%20y2='-27.3465'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20stop-color='%23FFC0EF'/%3e%3cstop%20offset='0.46875'%20stop-color='%238C1D70'/%3e%3cstop%20offset='1'%20stop-color='%231B0336'/%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Предсказания</title>
+		<script type="text/javascript">
+			;(function (l) {
+				if (l.search[1] === '/') {
+					var decoded = l.search
+						.slice(1)
+						.split('&')
+						.map(function (s) {
+							return s.replace(/~and~/g, '&')
+						})
+						.join('?')
+					window.history.replaceState(
+						null,
+						null,
+						l.pathname.slice(0, -1) + decoded + l.hash
+					)
+				}
+			})(window.location)
+		</script>
+		<script type="module" crossorigin src="/predictions/assets/index-eA7bSsPb.js"></script>
+		<link rel="stylesheet" crossorigin href="/predictions/assets/index-zF79mVTz.css">
+	</head>
 
-<head>
-	<meta charset="UTF-8" />
-	<link rel="icon" type="image/svg+xml" href="/predictions/vite.svg" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Предсказания</title>
-	<script type="text/javascript">
-
-		(function (l) {
-			if (l.search[1] === '/') {
-				var decoded = l.search.slice(1).split('&').map(function (s) {
-					return s.replace(/~and~/g, '&')
-				}).join('?');
-				window.history.replaceState(null, null,
-					l.pathname.slice(0, -1) + decoded + l.hash
-				);
-			}
-		}(window.location))
-	</script>
-
-  <script type="module" crossorigin src="/predictions/assets/index-zBeLnQ-Y.js"></script>
-  <link rel="stylesheet" crossorigin href="/predictions/assets/index-OACqShpH.css">
-</head>
-
-<body>
-	<div id="root"></div>
-</body>
-
+	<body>
+		<div id="root"></div>
+	</body>
 </html>
