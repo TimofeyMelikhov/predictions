@@ -25,11 +25,15 @@ export const Playbar = () => {
 	const sliderCurrentTime = Math.round((currentTime / duration) * 100)
 
 	useEffect(() => {
-		if (audioRef.current) {
-			audioRef.current.volume = currentVolume
-			if (isPlaying) {
-				audioRef.current.play()
+		try {
+			if (audioRef.current) {
+				audioRef.current.volume = currentVolume
+				if (isPlaying) {
+					audioRef.current.play()
+				}
 			}
+		} catch (error) {
+			console.log(error)
 		}
 	}, [currentTrack, currentVolume, dispatch, isPlaying])
 

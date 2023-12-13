@@ -66,6 +66,7 @@ export const Prediction = () => {
 		loadImageColors()
 		dispatch(setCurrentTrack(currentPrediction))
 		dispatch(updateDuration(currentPrediction.duration))
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [currentPrediction, dispatch])
 
 	const gradientStyle = {

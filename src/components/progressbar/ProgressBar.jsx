@@ -29,7 +29,7 @@ export const ProgressBar = () => {
 				setTimeout(() => {
 					dispatch(setProgress(0))
 					navigate(`/prediction/${randomId}`)
-				}, 100)
+				}, 50)
 			}
 		}, 100)
 
@@ -54,7 +54,7 @@ export const ProgressBar = () => {
 					}}
 				></div>
 			</div>
-			{`${progress}%`}
+			<div className={classes.persent}>{`${progress}%`}</div>
 		</>
 	)
 }
