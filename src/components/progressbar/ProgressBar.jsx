@@ -47,7 +47,7 @@ export const ProgressBar = () => {
 
 	return (
 		<>
-			<div>{getCurrentPhrase()}</div>
+			<div className={classes.pharase}>{getCurrentPhrase()}</div>
 			<div className={classes.progressContainer}>
 				<div
 					className={classes.progressBar}
