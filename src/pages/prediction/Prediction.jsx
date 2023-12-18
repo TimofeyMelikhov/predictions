@@ -18,6 +18,7 @@ export const Prediction = () => {
 	const { id } = useParams()
 	const dispatch = useDispatch()
 	const prediction = useSelector(state => state.predictionSlice.predictions)
+	const { trackEnded } = useSelector(state => state.predictionSlice)
 	const [imageColors, setImageColors] = useState([])
 	const [showBlock, setShowBlock] = useState(false)
 
@@ -73,6 +74,8 @@ export const Prediction = () => {
 		background: `linear-gradient(249.93deg, ${imageColors.join(', ')})`
 	}
 
+	console.log(trackEnded)
+
 	const resetApp = () => {
 		navigate('/loading')
 		dispatch(setTrackEnded(false))
@@ -88,6 +91,14 @@ export const Prediction = () => {
 			clearInterval(timerId)
 		}
 	}, [showBlock])
+
+	useEffect(() => {
+		if (trackEnded) {
+			setTimeout(() => {
+				navigate('/loading')
+			}, 1000)
+		}
+	}, [trackEnded])
 
 	return (
 		<div className={classes.main} style={gradientStyle}>
