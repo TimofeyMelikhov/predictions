@@ -7,6 +7,7 @@ import { Playbar } from 'src/components/playbar/playbar'
 
 import {
 	setCurrentTrack,
+	setPlaying,
 	setTrackEnded,
 	updateDuration
 } from '../../store/predictionSlice'
@@ -77,6 +78,7 @@ export const Prediction = () => {
 	const resetApp = () => {
 		navigate('/loading')
 		dispatch(setTrackEnded(false))
+		dispatch(setPlaying(false))
 		setShowBlock(false)
 	}
 

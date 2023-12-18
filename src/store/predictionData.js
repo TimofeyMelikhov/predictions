@@ -188,7 +188,7 @@ export const predictions = [
 		id: 13,
 		img: cat13,
 		trackLink:
-			'https://kurs.espbmrc.ru/courses/prediction/music/Margosha — Песенка (+8 кг).mp3',
+			'https://kurs.espbmrc.ru/courses/prediction/music/Margosha — Песенка.mp3',
 		artist: 'Margosha',
 		trackName: 'Песенка (+8 кг)',
 		duration: 120

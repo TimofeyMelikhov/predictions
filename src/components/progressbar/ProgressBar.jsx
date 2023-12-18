@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { setTrackEnded } from 'src/store/predictionSlice'
@@ -11,7 +11,7 @@ export const ProgressBar = () => {
 	const progress = useSelector(state => state.progressSlice.value)
 	const dispatch = useDispatch()
 	const prediction = useSelector(state => state.predictionSlice.predictions)
-	const { trackEnded } = useSelector(state => state.predictionSlice)
+	const { trackEnded, isPlaying } = useSelector(state => state.predictionSlice)
 
 	const randomId = Math.floor(Math.random() * prediction.length) + 1
 
@@ -22,7 +22,7 @@ export const ProgressBar = () => {
 		'Таролог готовит расклад на год грядущий, потерпите'
 	]
 
-	useLayoutEffect(() => {
+	useEffect(() => {
 		const interval = setInterval(() => {
 			if (progress < 100) {
 				dispatch(setProgress(progress + 1))

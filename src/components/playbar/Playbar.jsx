@@ -27,21 +27,25 @@ export const Playbar = () => {
 		duration !== 0 ? Math.round((currentTime / duration) * 100) : 0
 
 	useEffect(() => {
-		try {
-			if (audioRef.current) {
-				audioRef.current.volume = currentVolume
-				if (isPlaying) {
-					audioRef.current.play()
-				}
+		const audio = audioRef.current
+		audio.volume = currentVolume
+		const handleCanPlayThrough = () => {
+			if (!isPlaying) {
+				dispatch(setPlaying(true))
+				audio.play()
 			}
-		} catch (error) {
-			console.log(error)
+		}
+		audio.addEventListener('canplaythrough', handleCanPlayThrough)
+
+		return () => {
+			audio.removeEventListener('canplaythrough', handleCanPlayThrough)
 		}
 	}, [currentTrack, currentVolume, dispatch, isPlaying])
 
 	useEffect(() => {
 		audioRef.current.addEventListener('ended', () => {
 			dispatch(setTrackEnded(true))
+			dispatch(setPlaying(false))
 		})
 	}, [dispatch])
 
