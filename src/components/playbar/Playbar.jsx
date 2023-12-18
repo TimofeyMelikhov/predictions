@@ -29,16 +29,16 @@ export const Playbar = () => {
 	useEffect(() => {
 		const audio = audioRef.current
 		audio.volume = currentVolume
-		const handleCanPlayThrough = () => {
+		const handleCanPlay = () => {
 			if (!isPlaying) {
 				dispatch(setPlaying(true))
 				audio.play()
 			}
 		}
-		audio.addEventListener('canplaythrough', handleCanPlayThrough)
+		audio.addEventListener('canplay', handleCanPlay)
 
 		return () => {
-			audio.removeEventListener('canplaythrough', handleCanPlayThrough)
+			audio.removeEventListener('canplay', handleCanPlay)
 		}
 	}, [currentTrack, currentVolume, dispatch, isPlaying])
 

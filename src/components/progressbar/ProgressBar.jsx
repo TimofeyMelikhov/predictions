@@ -11,7 +11,7 @@ export const ProgressBar = () => {
 	const progress = useSelector(state => state.progressSlice.value)
 	const dispatch = useDispatch()
 	const prediction = useSelector(state => state.predictionSlice.predictions)
-	const { trackEnded, isPlaying } = useSelector(state => state.predictionSlice)
+	const { trackEnded } = useSelector(state => state.predictionSlice)
 
 	const randomId = Math.floor(Math.random() * prediction.length) + 1
 
