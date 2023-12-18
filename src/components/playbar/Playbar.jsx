@@ -2,6 +2,7 @@ import { Pause, PlayArrow } from '@mui/icons-material'
 import { IconButton, Slider } from '@mui/material'
 import { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+
 import { secondsConverter } from 'src/utils/secondsConverter'
 
 import {
@@ -22,7 +23,8 @@ export const Playbar = () => {
 
 	const formattedCurrentDuration = secondsConverter(currentTime)
 	const formattedDuration = secondsConverter(duration)
-	const sliderCurrentTime = Math.round((currentTime / duration) * 100)
+	const sliderCurrentTime =
+		duration !== 0 ? Math.round((currentTime / duration) * 100) : 0
 
 	useEffect(() => {
 		try {

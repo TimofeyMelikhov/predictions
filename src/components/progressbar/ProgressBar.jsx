@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useLayoutEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { setTrackEnded } from 'src/store/predictionSlice'
@@ -22,7 +22,7 @@ export const ProgressBar = () => {
 		'Таролог готовит расклад на год грядущий, потерпите'
 	]
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		const interval = setInterval(() => {
 			if (progress < 100) {
 				dispatch(setProgress(progress + 1))

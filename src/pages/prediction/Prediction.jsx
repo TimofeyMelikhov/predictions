@@ -74,8 +74,6 @@ export const Prediction = () => {
 		background: `linear-gradient(249.93deg, ${imageColors.join(', ')})`
 	}
 
-	console.log(trackEnded)
-
 	const resetApp = () => {
 		navigate('/loading')
 		dispatch(setTrackEnded(false))

@@ -7,7 +7,6 @@
 	border-radius: 10px;
 	position: relative;
 	overflow: hidden;
-	transition: height 0.5s ease-in-out; /* Добавим анимацию высоты для плавного изменения размера контейнера */
 }
 
 .progressBar {
@@ -17,12 +16,7 @@
 	position: absolute;
 	text-align: center;
 	line-height: 20px;
-	transition: width 0.5s ease-in-out; /* Анимация ширины для плавного изменения прогресса */
-}
-
-/* Добавим класс transition для запуска анимации */
-.transition {
-	height: 0;
+	transition: width 0.3s ease-out;
 }
 .pharase {
 	font-weight: 300;
