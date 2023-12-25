@@ -92,13 +92,13 @@ export const Prediction = () => {
 		}
 	}, [showBlock])
 
-	useEffect(() => {
-		if (trackEnded) {
-			setTimeout(() => {
-				navigate('/loading')
-			}, 1000)
-		}
-	}, [trackEnded])
+	// useEffect(() => {
+	// 	if (trackEnded) {
+	// 		setTimeout(() => {
+	// 			navigate('/loading')
+	// 		}, 1000)
+	// 	}
+	// }, [trackEnded])
 
 	return (
 		<div className={classes.main} style={gradientStyle}>
