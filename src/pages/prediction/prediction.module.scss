@@ -11,6 +11,7 @@
 	}
 
 	.predictionCard {
+		position: relative;
 		width: 400px;
 		height: 400px;
 		border-radius: 40px;
@@ -26,6 +27,10 @@
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
+			@media (max-width: 481px) {
+				width: 300px;
+				height: 300px;
+			}
 		}
 	}
 
@@ -72,6 +77,17 @@
 			height: 103px;
 			background: url('../../assets/img/resetBtn.png');
 			z-index: 999;
+			&_mobile {
+				position: absolute;
+				background: url('../../assets/img/resetBtn.png');
+				width: 103px;
+				height: 103px;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				cursor: pointer;
+				z-index: 999;
+			}
 		}
 	}
 }

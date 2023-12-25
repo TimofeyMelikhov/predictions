@@ -19,8 +19,9 @@ export const Prediction = () => {
 	const { id } = useParams()
 	const dispatch = useDispatch()
 	const prediction = useSelector(state => state.predictionSlice.predictions)
-	const { trackEnded } = useSelector(state => state.predictionSlice)
+	// const { trackEnded } = useSelector(state => state.predictionSlice)
 	const [imageColors, setImageColors] = useState([])
+	const [isMobile, setIsMobile] = useState(false)
 	const [showBlock, setShowBlock] = useState(false)
 
 	const currentPrediction = prediction.find(
@@ -84,7 +85,12 @@ export const Prediction = () => {
 
 	useEffect(() => {
 		const timerId = setInterval(() => {
-			setShowBlock(true)
+			const isMobileScreen = window.innerWidth <= 420
+			setIsMobile(isMobileScreen)
+
+			if (window.innerWidth > 420) {
+				setShowBlock(true)
+			}
 		}, 21000)
 
 		return () => {
@@ -111,7 +117,15 @@ export const Prediction = () => {
 
 			<div className={classes.main__player}>
 				<div className={classes.predictionCard}>
-					<img src={currentPrediction.img} alt='image current prediction' />
+					<div
+						className={isMobile ? classes.reset__btn_mobile : ''}
+						onClick={resetApp}
+					></div>
+					<img
+						src={currentPrediction.img}
+						style={isMobile ? { filter: 'blur(6px)' } : {}}
+						alt='image current prediction'
+					/>
 					<div> {prediction.descr} </div>
 				</div>
 

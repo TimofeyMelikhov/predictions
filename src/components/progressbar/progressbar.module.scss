@@ -7,6 +7,9 @@
 	border-radius: 10px;
 	position: relative;
 	overflow: hidden;
+	@media (max-width: 481px) {
+		width: 90%;
+	}
 }
 
 .progressBar {
@@ -21,6 +24,10 @@
 .pharase {
 	font-weight: 300;
 	font-size: 23px;
+	@media (max-width: 481px) {
+		font-size: 18px;
+		text-align: center;
+	}
 }
 
 .persent {

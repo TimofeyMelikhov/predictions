@@ -14,7 +14,7 @@ export const Home = () => {
 
 			<div className={classes.content}>
 				<h1 className={classes.content__header}>
-					Раздаем <span>песни-предсказания</span> <br /> на новый
+					<div>Раздаем</div> <span>песни-предсказания</span> <br /> на новый
 					<span> 2024</span>
 				</h1>
 				<MainButton />
