@@ -1,4 +1,5 @@
 import cat from 'src/assets/img/cat.png'
+import catMobile from 'src/assets/img/catForMobile.png'
 import smalCat from 'src/assets/img/smal_cat.png'
 
 import { MainButton } from 'src/components/ui/mainButton/MainButton'
@@ -21,7 +22,8 @@ export const Home = () => {
 			</div>
 
 			<div className={classes.catAndCopy}>
-				<img src={cat} />
+				{window.innerWidth > 420 && <img src={cat} />}
+				{window.innerWidth < 420 && <img src={catMobile} />}
 				<div className={classes.copyrigth}>
 					© Отдел дистанционного обучения, <br />{' '}
 					<div>с любовью к котикам</div>
